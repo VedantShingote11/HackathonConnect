@@ -3,7 +3,7 @@ import React from 'react'
 const Card = () => {
   return (
     <>
-    <div className="flex flex-col justify-center min-w-sm w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 gap-5 my-6">
+    <div className="cursor-pointer flex flex-col justify-center min-w-sm w-80 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 gap-5 my-6">
                 <img
                     src="https://via.placeholder.com/400x200"
                     alt="Hackathon Image"

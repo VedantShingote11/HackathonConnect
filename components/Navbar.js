@@ -19,12 +19,14 @@ const Navbar = () => {
                         Hackathon
                     </button>
                     </Link>
-                    <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
-                        My Team
-                    </button>
+                    <Link href={"/viewTeam"}><button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
+                        View Team
+                    </button></Link>
+                    <Link href={"/profile"}>
                     <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
                         Profile
                     </button>
+                    </Link>
                     <button onClick={()=>{signOut({ callbackUrl: "/" })}}className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
                         Signout
                     </button>
