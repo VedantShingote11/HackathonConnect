@@ -4,7 +4,7 @@ const page = () => {
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
             <div className="bg-white shadow-lg rounded-lg p-8 w-[90vw] md:w-[60vw] space-y-6">
-                
+
                 <div className="flex justify-center">
                     <img
                         src="https://via.placeholder.com/150"
@@ -42,9 +42,14 @@ const page = () => {
                         <li>Completed a full-stack development internship</li>
                     </ul>
                 </div>
+                <button className="w-[20vw] mx-56 my-6 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-200">
+                    Edit
+                </button>
             </div>
         </div>
     );
 };
 
 export default page;
+
+

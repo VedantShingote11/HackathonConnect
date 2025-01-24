@@ -12,15 +12,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <SessionWrapper>
+      <head><script src="https://cdn.lordicon.com/lordicon.js"></script>
+      </head>
       <body className="">
+      <SessionWrapper>
         <Navbar/>
         <div className="main h-[80vh] overflow-y-scroll">
         {children}
         </div>
         <Footer/>
-      </body>
       </SessionWrapper>
+      </body>
     </html>
   );
 }
