@@ -6,10 +6,12 @@ import { useSearchParams } from "next/navigation";
 const teamDetails = () => {
 
     const params = useSearchParams();
+    const id = params.get('id')
+
     const [teamDetails, setTeamDetails] = useState(null);
 
     useEffect(() => {
-        const id = params.get('id')
+        
         const fetchTeamDetails = async () => {
             try {
                 const response = await fetch("/api/submitDetails", {
@@ -32,7 +34,7 @@ const teamDetails = () => {
         };
 
         fetchTeamDetails();
-    }, []);
+    }, [id]);
 
     // const handleEdit = async() => {
         
@@ -86,7 +88,7 @@ const teamDetails = () => {
                     </ul>
                 </div>
 
-                <Link href={"/teamForm"}>
+                <Link href={{pathname:"/teamForm" , query:{_id:teamDetails._id}}}>
                     <button className="mx-64 w-40 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition mt-3 duration-200">
                         Edit
                     </button>

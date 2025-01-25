@@ -58,6 +58,43 @@ export async function DELETE(request) {
     }
 }
 
+export async function PUT(request) {
+    try {
+        const data = await request.json();
+        console.log(data)
+
+        if (!data._id) {
+            return NextResponse.json(
+                { success: false, error: "ID is required to update the document" },
+                { status: 400 }
+            );
+        }
+
+        const objectId = new ObjectId(data._id);
+        const { _id, ...updatedData } = data;
+
+        const result = await collection.updateOne(
+            { _id: objectId }, 
+            { $set: updatedData } // set updated entries
+        );
+
+        if (result.matchedCount === 0) {
+            return NextResponse.json(
+                { success: false, error: "No document found with the specified ID" },
+                { status: 404 }
+            );
+        }
+
+        return NextResponse.json({ success: true, message: "Team updated successfully", result });
+    } catch (error) {
+        console.error("Error updating data:", error);
+        return NextResponse.json(
+            { success: false, error: "Failed to update data" },
+            { status: 500 }
+        );
+    }
+}
+
 
 
 

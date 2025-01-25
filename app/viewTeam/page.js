@@ -94,7 +94,7 @@ const Card = () => {
 
                 </div>
                 <div className="btn h-full">
-                    <Link href={"/teamForm"}>
+                    <Link href={{pathname:"/teamForm" , query:{_id:"notEdit"}}}>
                         <button className="w-40 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition mt-3 duration-200">
                             Create
                         </button>

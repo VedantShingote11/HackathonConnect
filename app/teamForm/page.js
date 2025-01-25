@@ -1,17 +1,16 @@
 "use client"
 import React from 'react'
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
-// import { useSearchParams } from 'next/navigation';
-import teamDetails from '../teamDetails/page';
+import { useSearchParams } from 'next/navigation';
 
 const page = () => {
 
-    // const params = useSearchParams();
-    // const {id} = params.get("id");
+    const params = useSearchParams();
+    const id = params.get("_id");
 
     const [teams, setTeams] = useState([]);
-    const [form, setForm] = useState({ hackathonName: "",teamName:"", problemStatement: "", details: "", teamLeader: "", teamMembers: ["", "", "", "", ""] })
+    const [form, setForm] = useState({ hackathonName: "", teamName: "", problemStatement: "", details: "", teamLeader: "", teamMembers: ["", "", "", "", ""] })
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -27,11 +26,11 @@ const page = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newTeam = { ...form, id: uuidv4() };
-
+        const newTeam = { ...form, id: id === "notEdit"? uuidv4():id };
+    
         try {
             const response = await fetch('/api/submitDetails', {
-                method: 'POST',
+                method: id === "notEdit" ? "POST" : "PUT",
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -42,13 +41,15 @@ const page = () => {
                 setTeams([...teams, newTeam]);
                 console.log('Team details submitted successfully!');
                 setForm({
-                    teamName:"",
+                    teamName: "",
                     hackathonName: "",
                     problemStatement: "",
                     details: "",
                     teamLeader: "",
                     teamMembers: ["", "", "", "", ""],
                 });
+
+                window.location.href = "/viewTeam";
             } else {
                 console.error('Failed to submit team details');
             }
@@ -57,53 +58,35 @@ const page = () => {
         }
     };
 
-    // if(id != -1){
-        
-    //     const fetchTeamDetails = async () => {
-    //         try {
-    //             const response = await fetch("/api/submitDetails", {
-    //                 method: "GET",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                 },
-    //             });
+    useEffect(() => {
+        if (id !== "notEdit") {
+            const fetchTeamDetails = async () => {
+                try {
+                    const response = await fetch("/api/submitDetails", {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    });
 
-    //             if (!response.ok) {
-    //                 throw new Error("Failed to fetch team data");
-    //             }
+                    if (!response.ok) {
+                        throw new Error("Failed to fetch team data");
+                    }
 
-    //             const teams = await response.json();
-    //             const team = teams.data.find((team) => team.id === id);
-    //             setForm(team)
-    //         } catch (error) {
-    //             console.error("Error fetching team details:", error);
-    //         }
-    //     };
+                    const teams = await response.json();
+                    const team = teams.data.find((team) => team._id === id);
+                    if (team) {
+                        setForm(team);
+                    }
+                } catch (error) {
+                    console.error("Error fetching team details:", error);
+                }
+            };
 
-    //     const deleteTeamDetails = async (id) => {
-    //         try{
-    //         const response = await fetch("/api/submitDetails", {
-    //                     method: "DELETE",
-    //                     headers: {
-    //                         "Content-Type": "application/json",
-    //                     },
-    //                     body: JSON.stringify({id}),
-    //                 });
-    //                 if (!response.ok) {
-    //                     throw new Error("Failed to delete the team.");
-    //                 }
-    
-    //                 setTeamData((prevData)=>prevData.filter((item)=>item.id !== id));
-    //             }
-    //             catch(error) {
-    //                 console.error("Error deleting team:", error);
-    //                 alert("An error occurred while trying to delete the team. Please try again.");
-    //             }
-    //     }
+            fetchTeamDetails();
+        }
+    }, [id]);
 
-    //     fetchTeamDetails();
-    //     deleteTeamDetails(id);
-    // }
 
 
 
@@ -219,3 +202,5 @@ const page = () => {
 };
 
 export default page;
+
+
