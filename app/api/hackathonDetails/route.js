@@ -10,7 +10,6 @@ const collection = db.collection("hackathonDetail");
 export async function GET(request){
     try{
         const allData = await collection.find({}).toArray();
-
         return NextResponse.json({ success: true, data: allData });
     }catch (error) {
         console.error("Error fetching data:", error);

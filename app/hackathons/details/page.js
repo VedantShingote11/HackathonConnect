@@ -31,9 +31,7 @@ const Page = () => {
 
                 const obj = allData.data.find((obj) => obj._id === id)
 
-                console.log(obj)
                 setData(obj);
-                console.log(data)
 
             } catch (error) {
                 console.error("Error fetching team details:", error);
@@ -43,7 +41,7 @@ const Page = () => {
     }, [])
 
     useEffect(() => {
-      
+
     }, [data])
     
 

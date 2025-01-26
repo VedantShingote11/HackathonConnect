@@ -10,7 +10,7 @@ const Page = () => {
             <button
                     className="bg-white text-blue-600 w-44 px-6 py-3 rounded-lg border border-blue-600 hover:bg-blue-100"
                     onClick={() => {
-                        signIn("google" , { callbackUrl: "/dashboard" });
+                        signIn("google" , { callbackUrl: "/" });
                     }}
                 >
                     Google
@@ -18,7 +18,7 @@ const Page = () => {
                 <button
                     className="bg-white text-blue-600 w-44 px-6 py-3 rounded-lg border border-blue-600 hover:bg-blue-100"
                     onClick={() => {
-                        signIn("github" , { callbackUrl: "/dashboard" });
+                        signIn("github" , { callbackUrl: "/" });
                     }}
                 >
                     Github
