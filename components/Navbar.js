@@ -13,21 +13,28 @@ const Navbar = () => {
                     Platform Name
                 </div>
 
-                <div className="space-x-4">
+                <div className="space-x-4 flex items-center">
+                <Link href={"/search"}>
+                        <button className=''>
+                        <lord-icon
+                                src="https://cdn.lordicon.com/fkdzyfle.json"
+                                trigger="hover"
+                                style={{ "width": "29px", "height": "29px" }}>
+                            </lord-icon></button></Link>
                     <Link href={"/hackathons"}>
-                    <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
-                        Hackathon
-                    </button>
+                        <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
+                            Hackathon
+                        </button>
                     </Link>
                     <Link href={"/viewTeam"}><button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
                         View Team
                     </button></Link>
                     <Link href={"/profile"}>
-                    <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
-                        Profile
-                    </button>
+                        <button className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
+                            Profile
+                        </button>
                     </Link>
-                    <button onClick={()=>{signOut({ callbackUrl: "/" })}}className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
+                    <button onClick={() => { signOut({ callbackUrl: "/" }) }} className="px-4 py-2 bg-white text-blue-600 font-medium rounded hover:bg-blue-100">
                         Signout
                     </button>
                 </div>

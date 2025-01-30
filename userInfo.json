@@ -1,0 +1,62 @@
+[
+    {
+      "name": "Vedant Sharma",
+      "email": "vedant.sharma@example.com",
+      "college": "XYZ College",
+      "domain": "ML"
+    },
+    {
+      "name": "Ananya Patel",
+      "email": "ananya.patel@example.com",
+      "college": "ABC University",
+      "domain": "Web"
+    },
+    {
+      "name": "Rohit Mehta",
+      "email": "rohit.mehta@example.com",
+      "college": "DEF Institute",
+      "domain": "ML"
+    },
+    {
+      "name": "Sneha Verma",
+      "email": "sneha.verma@example.com",
+      "college": "GHI University",
+      "domain": "Web"
+    },
+    {
+      "name": "Amit Kumar",
+      "email": "amit.kumar@example.com",
+      "college": "JKL College",
+      "domain": "ML"
+    },
+    {
+      "name": "Pooja Reddy",
+      "email": "pooja.reddy@example.com",
+      "college": "MNO Institute",
+      "domain": "Web"
+    },
+    {
+      "name": "Karan Malhotra",
+      "email": "karan.malhotra@example.com",
+      "college": "PQR University",
+      "domain": "ML"
+    },
+    {
+      "name": "Neha Gupta",
+      "email": "neha.gupta@example.com",
+      "college": "STU College",
+      "domain": "Web"
+    },
+    {
+      "name": "Sahil Joshi",
+      "email": "sahil.joshi@example.com",
+      "college": "VWX Institute",
+      "domain": "ML"
+    },
+    {
+      "name": "Meera Nair",
+      "email": "meera.nair@example.com",
+      "college": "YZA University",
+      "domain": "Web"
+    }
+  ]
