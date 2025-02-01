@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const page = () => {
 
@@ -64,10 +65,14 @@ const page = () => {
                         <div className='email text-gray-700 text-sm'>{item.email}</div>
                         <div className="domain">{item.domain}</div>
                     </div>
-                    <div className='btns'>
+                    <div className='btns flex items-center gap-2'>
                         <button className='px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-md hover:bg-green-600 transition'>
                             View Profile
                         </button>
+                        <Link href={{
+                            pathname:"/invite",
+                            query:{email:item.email}
+                        }}><button className='px-4 py-2 bg-green-500 text-white text-sm font-medium rounded-md hover:bg-green-600 transition'>Invite</button></Link>
                     </div>
                 </div>
                 })}

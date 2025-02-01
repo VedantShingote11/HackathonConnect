@@ -2,6 +2,7 @@ import "./globals.css";
 import SessionWrapper from "@/components/SessionWrapper";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 
 export const metadata = {
@@ -14,14 +15,21 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head><script src="https://cdn.lordicon.com/lordicon.js"></script>
       </head>
-      <body className="">
-      <SessionWrapper>
-        <Navbar/>
-        <div className="main h-[80vh] overflow-y-scroll">
-        {children}
-        </div>
-        <Footer/>
-      </SessionWrapper>
+      <body className="relative">
+        <SessionWrapper>
+          <Navbar />
+          <Link className='absolute top-20 right-7' href={"/notification"}>
+            <lord-icon
+              src="https://cdn.lordicon.com/lznlxwtc.json"
+              trigger="hover"
+              style={{ "width": "29px", "height": "29px" }}>
+            </lord-icon>
+          </Link>
+          <div className="main h-[80vh] overflow-y-scroll">
+            {children}
+          </div>
+          <Footer />
+        </SessionWrapper>
       </body>
     </html>
   );
