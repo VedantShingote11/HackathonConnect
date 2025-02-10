@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body className="">
       <SessionWrapper>
         <Navbar/>
-        <div className="main h-[80vh] overflow-y-scroll">
+        <div className="main h-[90vh] overflow-y-scroll">
         {children}
         </div>
         <Footer/>
