@@ -1,8 +1,14 @@
 import "./globals.css";
-import SessionWrapper from "@/components/SessionWrapper";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 
 export const metadata = {
@@ -12,11 +18,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <head><script src="https://cdn.lordicon.com/lordicon.js"></script>
       </head>
       <body className="relative">
-        <SessionWrapper>
           <Navbar />
           <Link className='absolute top-20 right-7' href={"/notification"}>
             <lord-icon
@@ -29,8 +35,8 @@ export default function RootLayout({ children }) {
             {children}
           </div>
           <Footer />
-        </SessionWrapper>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

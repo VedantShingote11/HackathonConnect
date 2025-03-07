@@ -53,6 +53,14 @@ const page = () => {
             } else {
                 console.error('Failed to submit team details');
             }
+
+            await fetch("/api/updateUser" , {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newTeam),
+            })
         } catch (error) {
             console.error('Error:', error);
         }

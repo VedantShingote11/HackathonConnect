@@ -12,24 +12,22 @@ export async function POST(request) {
 
         const data = await request.json();
 
-        console.log("Received data:", data);
-        
         await collection.insertOne(data);
 
         return NextResponse.json({ success: true, data });
-    
+
     } catch (error) {
         console.error("Error processing request:", error);
         return NextResponse.json({ success: false, error: "Invalid data" }, { status: 400 });
     }
 }
-export async function GET(request){
+export async function GET(request) {
     try {
 
         const allData = await collection.find({}).toArray();
 
-        console.log("Fetched data:", allData);
         return NextResponse.json({ success: true, data: allData });
+    
     } catch (error) {
         console.error("Error fetching data:", error);
         return NextResponse.json({ success: false, error: "Failed to fetch data" }, { status: 500 });
@@ -74,7 +72,7 @@ export async function PUT(request) {
         const { _id, ...updatedData } = data;
 
         const result = await collection.updateOne(
-            { _id: objectId }, 
+            { _id: objectId },
             { $set: updatedData } // set updated entries
         );
 
